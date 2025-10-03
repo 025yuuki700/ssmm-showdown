@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Sauce's Showdown Music Mod
-// @namespace    https://github.com/OpenSauce04/ssmm-showdown/
+// @namespace    https://github.com/025yuuki700/ssmm-showdown
 // @version      0.4
 // @description  A replacement of the Pokemon Showdown battle music with many other tracks from the Pokemon series
 // @author       OpenSauce
@@ -113,7 +113,7 @@ var
         return BattleBGM;
     }();
 
-  
+
 
 
 
@@ -2067,37 +2067,37 @@ BattleScene = function () {
 
             switch (bgmNum) {
                 case -1:
-                    this.bgm = BattleSound.loadBgm('https://play.pokemonshowdown.com/audio/bw2-homika-dogars.mp3', 1661, 68131, this.bgm);
+                    this.bgm = BattleSound.loadBgm('https://github.com/025yuuki700/ssmm-showdown/raw/master/music/Vs.MetaKnight.mp3', 1318912, 3144602, this.bgm);
                     break;
                 case -2:
-                    this.bgm = BattleSound.loadBgm('https://play.pokemonshowdown.com/audio/xd-miror-b.mp3', 9000, 57815, this.bgm);
+                    this.bgm = BattleSound.loadBgm('https://github.com/025yuuki700/ssmm-showdown/raw/master/music/music\DddMeta.mp3', 1060864, 8835606, this.bgm);
                     break;
                 case -3:
-                    this.bgm = BattleSound.loadBgm('https://play.pokemonshowdown.com/audio/colosseum-miror-b.mp3', 896, 47462, this.bgm);
+                    this.bgm = BattleSound.loadBgm('https://github.com/025yuuki700/ssmm-showdown/raw/master/music/RevengeofSteelWings.mp3', 473088, 5866622, this.bgm);
                     break;
                 case -101:
-                    this.bgm = BattleSound.loadBgm('https://play.pokemonshowdown.com/audio/spl-elite4.mp3', 3962, 152509, this.bgm);
+                    this.bgm = BattleSound.loadBgm('https://github.com/025yuuki700/ssmm-showdown/raw/master/music/RoarofDedede.mp3', 688128, 6192899, this.bgm);
                     break;
 
                 case 1:
-                    this.bgm = BattleSound.loadBgm('https://github.com/OpenSauce04/ssmm-showdown/raw/master/music/xy-elite4.mp3', 133673, 261675, this.bgm);
+                    this.bgm = BattleSound.loadBgm('https://github.com/025yuuki700/ssmm-showdown/raw/master/music/z-elite4.mp3', 12579840, 17587208, this.bgm);
                     break;
                 case 2:
-                    this.bgm = BattleSound.loadBgm('https://github.com/OpenSauce04/ssmm-showdown/raw/master/music/bw-n-final.mp3', 42532, 129714, this.bgm);
+                    this.bgm = BattleSound.loadBgm('https://github.com/025yuuki700/ssmm-showdown/raw/master/music/bw-n-final.mp3', 845824, 7181320, this.bgm);
                     break;
                 case 3:
-                    this.bgm = BattleSound.loadBgm('https://github.com/OpenSauce04/ssmm-showdown/raw/master/music/bdsp-giratina.mp3', 60527, 164162, this.bgm);
+                    this.bgm = BattleSound.loadBgm('https://github.com/025yuuki700/ssmm-showdown/raw/master/music/bdsp-giratina.mp3', 157696, 1358037, this.bgm);
                     break;
                 case 4:
-                    this.bgm = BattleSound.loadBgm('https://github.com/OpenSauce04/ssmm-showdown/raw/master/music/b2w2-plasma.mp3', 264410, 438982, this.bgm);
+                    this.bgm = BattleSound.loadBgm('https://github.com/025yuuki700/ssmm-showdown/raw/master/music/b2w2-plasma.mp3', 2881536, 10345736, this.bgm);
                     break;
                 case 5:
-                    this.bgm = BattleSound.loadBgm('https://github.com/OpenSauce04/ssmm-showdown/raw/master/music/bdsp-galactic-admin.mp3', 119450, 176991, this.bgm);
+                    this.bgm = BattleSound.loadBgm('https://github.com/025yuuki700/ssmm-showdown/raw/master/music/bdsp-galactic-admin.mp3', 1390592, 11162957, this.bgm);
                     break;
 
                 case 6:
                 default:
-                    this.bgm = BattleSound.loadBgm('https://play.pokemonshowdown.com/audio/sm-trainer.mp3', 8323, 89230, this.bgm);
+                    this.bgm = BattleSound.loadBgm('https://github.com/025yuuki700/ssmm-showdown/raw/master/music/TheFallingStarNowPiercesThroughtheLagrangePointPhase1.mp3', 3168256, 10763784, this.bgm);
                     break;
             }
 
@@ -2105,60 +2105,3 @@ BattleScene = function () {
     };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    _proto.
-        updateBgm = function updateBgm() {
-            var nowPlaying =
-                this.battle.turn >= 0 && !this.battle.ended && !this.battle.paused;
-
-            if (nowPlaying) {
-                if (!this.bgm) this.rollBgm();
-                this.bgm.resume();
-            } else if (this.bgm) {
-                this.bgm.pause();
-            }
-        };
-    _proto.
-        resetBgm = function resetBgm() {
-            if (this.bgm) this.bgm.stop();
-        };
-    _proto.
-        destroy = function destroy() {
-            this.log.destroy();
-            if (this.$frame) this.$frame.empty();
-            if (this.bgm) {
-                this.bgm.destroy();
-                this.bgm = null;
-            }
-            this.battle = null;
-        };
-    BattleScene.
-        getHPColor = function getHPColor(pokemon) {
-            var ratio = pokemon.hp / pokemon.maxhp;
-            if (ratio > 0.5) return 'g';
-            if (ratio > 0.2) return 'y';
-            return 'r';
-        };
-    return BattleScene;
-}();
